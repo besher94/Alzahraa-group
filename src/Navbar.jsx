@@ -31,7 +31,7 @@ import styles from "./nav.module.css";
 import { FaSearch } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { TbXboxXFilled } from "react-icons/tb";
-
+import se from "./assets/278120113_349010580577186_7645654570778796875_n.jpg";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSearchMobile, setShowSearchMobile] = useState(false);
@@ -66,10 +66,7 @@ export default function Navbar() {
         <div className={styles.logo}>
           <Link to="/">
             {" "}
-            <img
-              src="src/assets/278120113_349010580577186_7645654570778796875_n.jpg"
-              alt="شعار الشركة"
-            />
+            <img src={se} alt="شعار الشركة" />
           </Link>
         </div>
         <h2>مجموعة الزهراء</h2>
