@@ -23,7 +23,9 @@ const Home = () => {
       }
     }
   }, [hash]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const sections = [
     { id: "featured", title: "المنتجات المميزة", products: featured },
     { id: "screens", title: "شاشات تلفاز", products: screens },

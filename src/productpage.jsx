@@ -5,8 +5,12 @@ import laptops from "./data/laptops";
 import routers from "./data/routers";
 import surveillance from "./data/cameras";
 import "./productpage.css";
-
+import { useEffect } from "react";
 function ProductPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { id } = useParams();
   const navigate = useNavigate();
 
