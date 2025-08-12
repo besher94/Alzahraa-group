@@ -1,0 +1,184 @@
+.navbar {
+  background: #ffffff;
+  color: rgb(190, 28, 28);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  direction: rtl;
+  position: sticky; /* تثبيت النافبار */
+  top: 0;
+  z-index: 1000;
+  border-bottom: solid 1px black;
+  height: 90px !important;
+  padding-bottom: 0%;
+  padding-top: 5px;
+  margin-bottom: 30px;
+}
+
+nav img {
+  width: 80px;
+  height: 80px;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  font-size: larger;
+}
+
+.navLinks li a {
+  color: rgb(192, 28, 28);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navLinks li a :hover {
+  color: #ffcc00;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* زر الهامبرغر والبحث */
+.menuIcon,
+.searchIcon {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: rgb(194, 29, 29);
+  cursor: pointer;
+}
+
+/* شريط البحث في الكمبيوتر */
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 300px; /* حجم أكبر للبحث */
+}
+
+.searchBox input {
+  flex: 1;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: solid 2px rgb(194, 29, 29);
+  outline: none;
+  font-size: 1rem;
+}
+
+.searchButton {
+  background-color: rgb(194, 29, 29);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+  background-color: #b71c1c;
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background: #f1f1f1;
+    flex-direction: column;
+    width: 75vw;
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1999;
+    border-top-right-radius: 7px;
+    box-shadow: 3px -2px 15px -1px rgba(0, 0, 0, 0.49);
+  }
+  nav img {
+    height: 60px;
+    width: 60px;
+  }
+  .navLinks.active {
+    transform: translateX(0);
+  }
+  .navLinks li {
+    border-bottom: solid 1px rgb(159, 159, 159);
+  }
+  .searchBox {
+    display: none;
+  }
+  .icons {
+    gap: 10px;
+  }
+  .menuIcon {
+    order: -1;
+  }
+}
+
+/* البحث أسفل النافبار بالموبايل */
+.mobileSearch {
+  display: flex;
+  background: #ffffff;
+  padding: 10px 20px;
+  align-items: center;
+  direction: rtl;
+
+  z-index: 1001;
+  border-left: none;
+}
+
+.mobileSearch input {
+  flex: 1;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  outline: none;
+  border: solid 2px rgb(194, 29, 29);
+  border-left: none !important;
+  border-bottom-left-radius: 0%;
+}
+
+.closeSearch {
+  border-radius: 5px;
+  background-color: rgb(194, 29, 29);
+  padding-right: 10px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  border: solid 2px rgb(194, 29, 29);
+  border-right: none;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  height: 43px;
+}
+
+/* زر إغلاق القائمة */
+.closeMenuItem {
+  list-style: none;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: none !important;
+}
+
+.closeMenuButton {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: rgb(194, 29, 29);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}

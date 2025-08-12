@@ -1,0 +1,13 @@
+body {
+  direction: rtl;
+  text-align: right;
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
+  min-height: 100vh;
+}
+html {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  font-family: "Cairo", sans-serif;
+}
