@@ -35,7 +35,7 @@ const Home = () => {
   ];
 
   return (
-    <main>
+    <main id="home-main">
       <div className="img-container">
         <img
           src="src/assets/278116446_349010577243853_1146779946655986501_n.png"
@@ -46,7 +46,7 @@ const Home = () => {
       <div style={{ direction: "rtl", padding: "20px" }}>
         {sections.map((section) => (
           <div key={section.id} style={{ marginBottom: "40px" }}>
-            <h1 style={{ marginBottom: "10px" }}>{section.title}</h1>
+            <h1>{section.title}</h1>
             <Swiper
               spaceBetween={15}
               slidesPerView={2}
@@ -83,7 +83,7 @@ const Home = () => {
                     <h2 style={{ fontSize: "18px", color: "#555" }}>
                       {product.description}
                     </h2>
-                    <h2>{product.price} $</h2>
+                    <h2 id="product-price">{product.price} $</h2>
                   </div>
                 </SwiperSlide>
               ))}

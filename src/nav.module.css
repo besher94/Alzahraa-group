@@ -9,11 +9,14 @@
   position: sticky; /* تثبيت النافبار */
   top: 0;
   z-index: 1000;
-  border-bottom: solid 1px black;
+
   height: 90px !important;
   padding-bottom: 0%;
   padding-top: 5px;
   margin-bottom: 30px;
+  box-shadow: 0px 7px 18px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 7px 18px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 7px 18px -1px rgba(0, 0, 0, 0.75);
 }
 
 nav img {
