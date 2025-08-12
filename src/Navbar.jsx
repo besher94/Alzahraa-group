@@ -27,7 +27,7 @@
 import { Link, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Nav.module.css";
+import styles from "./nav.module.css";
 import { FaSearch } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { TbXboxXFilled } from "react-icons/tb";
