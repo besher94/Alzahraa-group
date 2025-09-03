@@ -1,29 +1,3 @@
-// import { FaSearch } from "react-icons/fa";
-// import { IoMenu } from "react-icons/io5";
-// import { IoHome } from "react-icons/io5";
-// import "./nav.css";
-// const Navbar = () => {
-//   return (
-//     <>
-//       <nav>
-//         <img
-//           src="src/assets/278120113_349010580577186_7645654570778796875_n.jpg"
-//           alt=""
-//         />
-//         <div className="icons">
-
-//           <IoMenu />
-//           <FaSearch />
-//           <IoHome />
-//         </div>
-//       </nav>
-//     </>
-//   );
-// };
-
-//
-// Navbar.jsx
-
 import { Link, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -32,11 +6,19 @@ import { FaSearch } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { TbXboxXFilled } from "react-icons/tb";
 import se from "./assets/278120113_349010580577186_7645654570778796875_n.jpg";
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSearchMobile, setShowSearchMobile] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [searchTerm, setSearchTerm] = useState("");
+
+  // ↓↓↓ جديد للقائمة
+  const [showProducts, setShowProducts] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [openMain, setOpenMain] = useState(null);
+  const [openSub, setOpenSub] = useState(null);
+  const [openGroup, setOpenGroup] = useState(null);
 
   const navigate = useNavigate();
 
@@ -52,11 +34,19 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // جلب التصنيفات من ملف JSON
+  useEffect(() => {
+    fetch("/data/categories.json")
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error("خطأ في جلب البيانات:", err));
+  }, []);
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim() !== "") {
       navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
-      setShowSearchMobile(false); // إغلاق بحث الموبايل بعد الإرسال
+      setShowSearchMobile(false);
     }
   };
 
@@ -65,7 +55,6 @@ export default function Navbar() {
       <nav className={styles.navbar}>
         <div className={styles.logo}>
           <Link to="/">
-            {" "}
             <img src={se} alt="شعار الشركة" />
           </Link>
         </div>
@@ -103,11 +92,74 @@ export default function Navbar() {
             </Link>
           </li>
 
-          <li>
-            <Link to="/#pp" onClick={() => setMenuOpen(false)}>
-              <p>المنتجات</p>
-            </Link>
+          {/* زر منتجاتنا الجديد */}
+          <li className={styles.productsMenu}>
+            <button id="tb" onClick={() => setShowProducts(!showProducts)}>
+              منتجاتنا{" "}
+              <span
+                className={`${styles.arrow} ${showProducts ? styles.up : ""}`}
+              >
+                ▼
+              </span>
+            </button>
+            {showProducts && (
+              <div className={styles.dropdownBox}>
+                {categories.map((cat, i) => (
+                  <div key={i}>
+                    <button
+                      onClick={() => setOpenMain(openMain === i ? null : i)}
+                    >
+                      {cat.name}
+                    </button>
+                    {openMain === i && cat.sub && (
+                      <div className={styles.subMenu}>
+                        {cat.sub.map((subCat, j) => (
+                          <div key={j}>
+                            <button
+                              onClick={() =>
+                                setOpenSub(openSub === j ? null : j)
+                              }
+                            >
+                              {subCat.name}
+                            </button>
+                            {openSub === j && subCat.sub && (
+                              <div className={styles.subMenu}>
+                                {subCat.sub.map((group, k) => (
+                                  <div key={k}>
+                                    <button
+                                      onClick={() =>
+                                        setOpenGroup(openGroup === k ? null : k)
+                                      }
+                                    >
+                                      {group.name}
+                                    </button>
+                                    {openGroup === k && group.items && (
+                                      <ul className={styles.itemList}>
+                                        {group.items.map((item, m) => (
+                                          <li key={m}>
+                                            <Link
+                                              to={`/products/${item.toLowerCase()}`}
+                                            >
+                                              {item}
+                                            </Link>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </li>
+
           <li>
             <Link to="/About" onClick={() => setMenuOpen(false)}>
               <p>من نحن</p>
@@ -115,7 +167,6 @@ export default function Navbar() {
           </li>
           <li>
             <Link to="/Contact" onClick={() => setMenuOpen(false)}>
-              {" "}
               <p>تواصل معنا</p>
             </Link>
           </li>
