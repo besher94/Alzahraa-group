@@ -1,0 +1,37 @@
+[
+  {
+    "brand": "TP-Link",
+    "products": [
+      {
+        "id": "vr300",
+        "name": "راوتر VR300",
+        "price": 150,
+        "images": ["/images/adsl/download (1).jpg", "/images/download.jpg"],
+        "speed": "300 Mbps",
+        "description": "راوتر ADSL/VDSL مع أداء ثابت وسرعة عالية"
+      },
+      {
+        "id": "vr400",
+        "name": "راوتر VR400",
+        "price": 180,
+        "images": [
+          "/images/adsl/download (4).jpg",
+          "/images/adsl/download (3).jpg"
+        ],
+        "speed": "400 Mbps",
+        "description": "راوتر ADSL/VDSL مع تغطية واسعة ودعم أحدث المعايير"
+      },
+      {
+        "id": "vr800",
+        "name": "راوتر VR800",
+        "price": 220,
+        "images": [
+          "/images/adsl/download (8).jpg",
+          "/images/adsl/download (7).jpg"
+        ],
+        "speed": "800 Mbps",
+        "description": "راوتر ADSL/VDSL فائق السرعة مع أداء احترافي"
+      }
+    ]
+  }
+]

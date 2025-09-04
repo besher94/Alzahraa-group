@@ -7,6 +7,9 @@ import ProductSearch from "./ProductSearch";
 import Footer from "./Ffooter";
 import About from "./About";
 import Contact from "./Contact";
+import CategoryPage from "./CategoryPage";
+import ProductsPage from "./productsPage";
+
 function App() {
   return (
     <div className="content">
@@ -15,6 +18,12 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/search" element={<ProductSearch></ProductSearch>}></Route>
+
+        <Route path="/products/:category" element={<CategoryPage />} />
+        <Route
+          path="/products/:category/:productId"
+          element={<ProductsPage />}
+        />
 
         <Route path="/About" element={<About></About>}></Route>
         <Route path="/Contact" element={<Contact></Contact>}></Route>

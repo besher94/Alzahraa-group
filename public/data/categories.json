@@ -1,35 +1,10 @@
 [
   {
     "name": "Routers",
-    "sub": [
-      {
-        "name": "tplink",
-        "sub": [
-          {
-            "name": "4G/5G",
-            "items": [
-              "Mr100",
-              "Mr200",
-              "Mr400",
-              "Mr202",
-              "Mr402",
-              "Mr105",
-              "Mr505",
-              "M7000",
-              "M7200",
-              "M7350"
-            ]
-          },
-          {
-            "name": "Adsl",
-            "items": ["9950", "9960", "8961", "Vr300", "Vr400", "Vr800"]
-          },
-          {
-            "name": "Wifi",
-            "items": ["Ap", "Range extender", "810", "841", "82", "C50", "c60"]
-          }
-        ]
-      }
+    "groups": [
+      { "name": "Wifi", "slug": "wifi" },
+      { "name": "Adsl", "slug": "adsl" },
+      { "name": "4G/5G", "slug": "4g-5g" }
     ]
   }
 ]

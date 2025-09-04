@@ -93,8 +93,9 @@ export default function Navbar() {
           </li>
 
           {/* زر منتجاتنا الجديد */}
+
           <li className={styles.productsMenu}>
-            <button id="tb" onClick={() => setShowProducts(!showProducts)}>
+            <button onClick={() => setShowProducts(!showProducts)}>
               منتجاتنا{" "}
               <span
                 className={`${styles.arrow} ${showProducts ? styles.up : ""}`}
@@ -102,63 +103,53 @@ export default function Navbar() {
                 ▼
               </span>
             </button>
+
             {showProducts && (
               <div className={styles.dropdownBox}>
-                {categories.map((cat, i) => (
-                  <div key={i}>
-                    <button
-                      onClick={() => setOpenMain(openMain === i ? null : i)}
-                    >
-                      {cat.name}
-                    </button>
-                    {openMain === i && cat.sub && (
-                      <div className={styles.subMenu}>
-                        {cat.sub.map((subCat, j) => (
-                          <div key={j}>
-                            <button
-                              onClick={() =>
-                                setOpenSub(openSub === j ? null : j)
-                              }
-                            >
-                              {subCat.name}
-                            </button>
-                            {openSub === j && subCat.sub && (
-                              <div className={styles.subMenu}>
-                                {subCat.sub.map((group, k) => (
-                                  <div key={k}>
-                                    <button
-                                      onClick={() =>
-                                        setOpenGroup(openGroup === k ? null : k)
-                                      }
-                                    >
-                                      {group.name}
-                                    </button>
-                                    {openGroup === k && group.items && (
-                                      <ul className={styles.itemList}>
-                                        {group.items.map((item, m) => (
-                                          <li key={m}>
-                                            <Link
-                                              to={`/products/${item.toLowerCase()}`}
-                                            >
-                                              {item}
-                                            </Link>
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                {/* زر Routers */}
+                <div>
+                  <button
+                    onClick={() =>
+                      setOpenMain(openMain === "routers" ? null : "routers")
+                    }
+                  >
+                    Routers
+                  </button>
+
+                  {openMain === "routers" && (
+                    <ul className={styles.itemList}>
+                      <li>
+                        <Link
+                          to="/products/wifi"
+                          onClick={() => setShowProducts(false)}
+                        >
+                          Wifi
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/adsl"
+                          onClick={() => setShowProducts(false)}
+                        >
+                          Adsl
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/products/4g-5g"
+                          onClick={() => setShowProducts(false)}
+                        >
+                          4G/5G
+                        </Link>
+                      </li>
+                    </ul>
+                  )}
+                </div>
               </div>
             )}
           </li>
+
+          {/* 3 */}
 
           <li>
             <Link to="/About" onClick={() => setMenuOpen(false)}>
